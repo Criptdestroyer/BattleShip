@@ -21,14 +21,12 @@ public class main {
         
         
         BattleShip bs = new BattleShip();
-        bs.T();
-        bs.I();
-        bs.LR();
-        bs.L();
+        bs.Generate();
         bs.printL();
         bs.printLR();
         bs.printT();
         bs.printI();
+        
     }
     
 }
