@@ -28,7 +28,7 @@ public class main {
         System.out.println("");
         int x, y;
         boolean main = true;
-        while (main) {
+        while (main && !bt.menang()) {
             do {
                 System.out.println("input koordinat");
                 System.out.print("x : ");
@@ -36,9 +36,9 @@ public class main {
                 System.out.print("y : ");
                 y = data.nextInt();
                 if (x == 999 && y == 999) {
-                    System.out.println("Anda Menyerah!");
+                    System.out.println("\nAnda Menyerah! permainan berakhir");
                     main = false;
-                }else{
+                } else {
                     if ((x < 0 || x > 9) || (y < 0 || y > 9)) {
                         System.out.println("Koordinat tidak ada pada gaming board, harap masukkan koordinat yang\n"
                                 + "valid (input must between 0-9)");
@@ -47,7 +47,15 @@ public class main {
                 }
 
             } while (((x < 0 || x > 9) || (y < 0 || y > 9)) && !(x == 999 && y == 999));
-            bt.input(x, y);
+            if (x == 999 && y == 999) {
+               bt.menyerah();
+            } else {
+                bt.input(x, y);
+                bt.printBattleField();
+            }
+        }
+        if(bt.menang()){
+            System.out.println("Selamat Anda Memenangkan Permainan");
             bt.printBattleField();
         }
     }
