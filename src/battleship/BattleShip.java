@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author alfath
  */
-public class BattleShip extends BattleField {
+public class BattleShip{
 
     private final Point L[];
     private final Point LR[];
@@ -29,7 +29,6 @@ public class BattleShip extends BattleField {
     }
 
     public LinkedList<Point> getCek() {
-        Generate();
         return cek;
     }
     
@@ -41,8 +40,8 @@ public class BattleShip extends BattleField {
     }
 
     private void L() {
-        int x = rand.nextInt(9) + 3;
-        int y = rand.nextInt(7) + 0;
+        int x = rand.nextInt(6)+3;
+        int y = rand.nextInt(7);
         L[0] = new Point(x, y);
         cek.add(L[0]);
         for (int i = 1; i <= 3; i++) {
@@ -69,8 +68,8 @@ public class BattleShip extends BattleField {
         boolean temp = true;
         Point s = new Point();
         while (temp) {
-            int x = rand.nextInt(9) + 0;
-            int y = rand.nextInt(6) + 0;
+            int x = rand.nextInt(9);
+            int y = rand.nextInt(6);
             LR[0] = new Point(x, y);
             for (int i = 1; i <= 3; i++) {
                 y++;
@@ -111,8 +110,8 @@ public class BattleShip extends BattleField {
         boolean temp = true;
         Point s = new Point();
         while (temp) {
-            int x = rand.nextInt(9) + 1;
-            int y = rand.nextInt(7) + 0;
+            int x = rand.nextInt(8) + 1;
+            int y = rand.nextInt(7);
             T[0] = new Point(x, y);
             for (int i = 1; i <= 3; i++) {
                 y++;
@@ -159,8 +158,8 @@ public class BattleShip extends BattleField {
         boolean temp = true;
         Point s = new Point();
         while (temp) {
-            int x = rand.nextInt(9) + 1;
-            int y = rand.nextInt(9) + 0;
+            int x = rand.nextInt(8) + 1;
+            int y = rand.nextInt(9);
             I[0] = new Point(x, y);
             x--;
             I[1] = new Point(x, y);

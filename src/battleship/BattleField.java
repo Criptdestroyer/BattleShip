@@ -14,6 +14,8 @@ import java.util.LinkedList;
 public class BattleField{
     char map[][] = new char[10][10];
     boolean ship[][] = new boolean[10][10];
+    BattleShip shp = new BattleShip();
+    
     public BattleField(){
         for (int i = map.length-1; i >= 0; i--) {
             for (int j = 0; j < map[i].length; j++) {
@@ -45,7 +47,9 @@ public class BattleField{
             System.out.println("");
         }
     }
-    public void generateField(LinkedList ship){
+    public void generateField(){
+        shp.Generate();        ;
+        LinkedList ship = shp.getCek();
         for (int i = 0; i < ship.size(); i++) {
             Point t = (Point) ship.get(i);
             this.ship[t.getX()][t.getY()] = true;
