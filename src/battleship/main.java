@@ -19,8 +19,16 @@ public class main {
         System.out.println("        Welcome to BattleShip");
         System.out.println("====================================");
         
-        BattleField bt = new BattleField();
-        bt.printBattleField();
+        
+        BattleShip bs = new BattleShip();
+        bs.T();
+        bs.I();
+        bs.LR();
+        bs.L();
+        bs.printL();
+        bs.printLR();
+        bs.printT();
+        bs.printI();
     }
     
 }

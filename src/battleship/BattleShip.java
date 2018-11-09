@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author alfath
  */
-public class BattleShip extends BattleField{
+public class BattleShip extends BattleField {
 
     private Point L[];
     private Point LR[];
@@ -27,7 +27,7 @@ public class BattleShip extends BattleField{
     }
 
     public void Generate() {
-        
+
     }
 
     public void L() {
@@ -51,9 +51,15 @@ public class BattleShip extends BattleField{
             System.out.println(temp.getX() + "," + temp.getY());
         }
     }
-
-    
-
+    public void LR(){
+        int x = rand.nextInt(9)+0;
+        int y = rand.nextInt(6)+0;
+        LR[0] = new Point(x, y);
+        for (int i = 1; i <=3; i++) {
+            y++;
+            LR[i] = new Point(x, y);
+        }
+    }
     public void printLR() {
         System.out.println("LR");
         for (int i = 0; i < LR.length; i++) {
@@ -61,5 +67,43 @@ public class BattleShip extends BattleField{
             System.out.println(temp.getX() + "," + temp.getY());
         }
     }
+    public void T(){
+        int x = rand.nextInt(9)+1;
+        int y = rand.nextInt(7)+0;
+        T[0] = new Point(x, y);
+        for (int i = 1; i <=3; i++) {
+            y++;
+            T[i] = new Point(x, y);
+            if(i == 1){
+                i++;
+                x--;
+                T[i] = new Point(x, y);
+                x++;
+            }
+            
+        }
+    }
+    public void printT() {
+        System.out.println("T");
+        for (int i = 0; i < T.length; i++) {
+            Point temp = T[i];
+            System.out.println(temp.getX() + "," + temp.getY());
+        }
+    }
+    public void I(){
+        int x = rand.nextInt(9)+1;
+        int y = rand.nextInt(9)+0;
+        I[0] = new Point(x, y);
+        x--;
+        I[1] = new Point(x, y);
+    }
+    public void printI() {
+        System.out.println("I");
+        for (int i = 0; i < I.length; i++) {
+            Point temp = I[i];
+            System.out.println(temp.getX() + "," + temp.getY());
+        }
+    }
+    
 
 }
