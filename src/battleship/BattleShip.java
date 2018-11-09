@@ -32,6 +32,7 @@ public class BattleShip{
         return cek;
     }
     
+    
     public void Generate() {
         L();
         LR();

@@ -18,26 +18,38 @@ public class main {
      */
     public static void main(String[] args) {
         Scanner data = new Scanner(System.in);
-        System.out.println("====================================");
-        System.out.println("        Welcome to BattleShip");
-        System.out.println("====================================");
-        
+        System.out.println("========================================================");
+        System.out.println("                  Welcome to BattleShip");
+        System.out.println("========================================================");
+
         BattleField bt = new BattleField();
         bt.generateField();
-        bt.printBattleShip();
+        bt.printBattleField();
         System.out.println("");
         int x, y;
-        
-        do {
-            System.out.print("input x : ");
-            x = data.nextInt();
-            System.out.print("input y : ");
-            y = data.nextInt();
-            if((x < 0 && x > 9) && (y < 0 && y > 9)){
-                System.out.println("input must between 0-9");
-            }
-        } while ((x < 0 && x > 9) && (y < 0 && y > 9));
+        boolean main = true;
+        while (main) {
+            do {
+                System.out.println("input koordinat");
+                System.out.print("x : ");
+                x = data.nextInt();
+                System.out.print("y : ");
+                y = data.nextInt();
+                if (x == 999 && y == 999) {
+                    System.out.println("Anda Menyerah!");
+                    main = false;
+                }else{
+                    if ((x < 0 || x > 9) || (y < 0 || y > 9)) {
+                        System.out.println("Koordinat tidak ada pada gaming board, harap masukkan koordinat yang\n"
+                                + "valid (input must between 0-9)");
+                        System.out.println("");
+                    }
+                }
 
+            } while (((x < 0 || x > 9) || (y < 0 || y > 9)) && !(x == 999 && y == 999));
+            bt.input(x, y);
+            bt.printBattleField();
+        }
     }
 
 }

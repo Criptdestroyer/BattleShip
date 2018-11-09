@@ -24,13 +24,24 @@ public class BattleField{
             }
         }
     }
+    public void input(int x, int y){
+        if(ship[x][y]==true){
+            map[x][y]= 'X';
+        }else{
+            map[x][y]='_';
+        }
+    }
     public void printBattleField(){
+        System.out.println("\t    0   1   2   3   4   5   6   7   8   9");
+        System.out.println("\t    _____________________________________");
         for (int i = map.length-1; i >= 0; i--) {
             System.out.print("\t");
+            System.out.print(i+"  |");
             for (int j = 0; j < map[i].length; j++) {
-                System.out.print(map[i][j]+" ");
+                System.out.print(map[i][j]+"   ");
             }
             System.out.println("");
+            System.out.println("\t   |");
         }
     }
     public void printBattleShip(){
