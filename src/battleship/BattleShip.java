@@ -28,6 +28,11 @@ public class BattleShip extends BattleField {
         I = new Point[2];
     }
 
+    public LinkedList<Point> getCek() {
+        Generate();
+        return cek;
+    }
+    
     public void Generate() {
         L();
         LR();

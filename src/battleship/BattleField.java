@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author alfath
@@ -29,9 +31,27 @@ public class BattleField{
             System.out.println("");
         }
     }
-    public void generate(){
-        
+    public void printBattleShip(){
+        for (int i = ship.length-1; i >= 0; i--) {
+            System.out.print("\t");
+            for (int j = 0; j < ship[i].length; j++) {
+                if(ship[i][j]==false){
+                    System.out.print("0 ");
+                }else{
+                    System.out.print("+ ");
+                }
+                
+            }
+            System.out.println("");
+        }
     }
+    public void generateField(LinkedList ship){
+        for (int i = 0; i < ship.size(); i++) {
+            Point t = (Point) ship.get(i);
+            this.ship[t.getX()][t.getY()] = true;
+        }
+    }
+    
     
     
 }

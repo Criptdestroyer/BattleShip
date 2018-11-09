@@ -21,11 +21,9 @@ public class main {
         
         
         BattleShip bs = new BattleShip();
-        bs.Generate();
-        bs.printL();
-        bs.printLR();
-        bs.printT();
-        bs.printI();
+        BattleField bt = new BattleField();
+        bt.generateField(bs.getCek());
+        bt.printBattleShip();
         
     }
     
