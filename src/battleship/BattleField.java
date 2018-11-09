@@ -16,9 +16,10 @@ public class BattleField {
     char map[][] = new char[10][10];
     boolean ship[][] = new boolean[10][10];
     BattleShip shp = new BattleShip();
+    LinkedList<Point> alreadyinput = new LinkedList<>();
     int benar = 0;
     int menangs = 16;
-    
+
     public BattleField() {
         for (int i = map.length - 1; i >= 0; i--) {
             for (int j = 0; j < map[i].length; j++) {
@@ -27,17 +28,27 @@ public class BattleField {
             }
         }
     }
-    public boolean menang(){
+
+    public boolean menang() {
         return benar == menangs;
     }
 
     public void input(int x, int y) {
         if (ship[x][y] == true) {
             map[x][y] = 'X';
-            benar++;
-            if(menangs==benar){
+            boolean cek = false;
+            for (int i = 0; i < alreadyinput.size(); i++) {
+                Point temp = alreadyinput.get(i);
+                if((x == temp.getX())&&(y == temp.getY())){
+                    cek = true;
+                }
                 
             }
+            if (cek == false) {
+                benar++;
+            }
+            alreadyinput.add(new Point(x, y));
+
         } else {
             map[x][y] = '_';
         }
