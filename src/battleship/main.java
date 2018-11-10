@@ -36,7 +36,9 @@ public class main {
                 System.out.print("y : ");
                 y = data.nextInt();
                 if (x == 999 && y == 999) {
-                    System.out.println("\nAnda Menyerah! permainan berakhir");
+                    System.out.println("========================================================");
+                    System.out.println("            Anda Menyerah! permainan berakhir");
+                    System.out.println("========================================================");
                     main = false;
                 } else {
                     if ((x < 0 || x > 9) || (y < 0 || y > 9)) {
@@ -48,14 +50,16 @@ public class main {
 
             } while (((x < 0 || x > 9) || (y < 0 || y > 9)) && !(x == 999 && y == 999));
             if (x == 999 && y == 999) {
-               bt.menyerah();
+                bt.menyerah();
             } else {
                 bt.input(x, y);
                 bt.printBattleField();
             }
         }
-        if(bt.menang()){
-            System.out.println("Selamat Anda Memenangkan Permainan");
+        if (bt.menang()) {
+            System.out.println("========================================================");
+            System.out.println("            Selamat Anda Memenangkan Permainan");
+            System.out.println("========================================================");
             bt.printBattleField();
         }
     }
