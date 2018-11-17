@@ -22,38 +22,39 @@ public class main {
         System.out.println("                  Welcome to BattleShip");
         System.out.println("========================================================");
 
-        BattleField bt = new BattleField();
-        bt.generateField();
-        bt.printBattleField();
+        BattleField bt = new BattleField(); //memanggil class battlefield
+        bt.generateField(); //memamanggil map yang sudah diisi oleh ship
+        bt.printBattleField();//menampilkan isi map
         System.out.println("");
         int x, y;
-        boolean main = true;
-        while (main && !bt.menang()) {
+        boolean main = true; //untuk stop pengulangan bila pemain menyerah
+        while (main && !bt.menang()) { //melakukan pengualngan selama pemain belum menyerah dan menang
             do {
-                System.out.println("input koordinat");
-                System.out.print("x : ");
+                System.out.println("input koordinat"); //pemain input baris dan kolom
+                System.out.print("baris : ");
                 x = data.nextInt();
-                System.out.print("y : ");
+                System.out.print("kolom : ");
                 y = data.nextInt();
-                if (x == 999 && y == 999) {
+                if (x == 999 && y == 999) { //pemain menyerah
                     System.out.println("========================================================");
                     System.out.println("            Anda Menyerah! permainan berakhir");
                     System.out.println("========================================================");
                     main = false;
                 } else {
-                    if ((x < 0 || x > 9) || (y < 0 || y > 9)) {
+                    if ((x < 0 || x > 9) || (y < 0 || y > 9)) { //jika pemain input selain dari 0-9
                         System.out.println("Koordinat tidak ada pada gaming board, harap masukkan koordinat yang\n"
                                 + "valid (input must between 0-9)");
                         System.out.println("");
                     }
                 }
 
-            } while (((x < 0 || x > 9) || (y < 0 || y > 9)) && !(x == 999 && y == 999));
+            } while (((x < 0 || x > 9) || (y < 0 || y > 9)) && !(x == 999 && y == 999));//jika input sesuai kriteria maka tdiak ada pengulangan
+
             if (x == 999 && y == 999) {
-                bt.menyerah();
+                bt.menyerah(); //menyerah
             } else {
-                bt.input(x, y);
-                bt.printBattleField();
+                bt.input(x, y); //menginputkan baris dan kolom yg pemain tebak
+                bt.printBattleField(); //meanmpilkan hasil tebakan di map
             }
         }
         if (bt.menang()) {

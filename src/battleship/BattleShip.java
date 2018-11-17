@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author alfath
  */
-public class BattleShip{
+public class BattleShip {
 
     private final Point L[];
     private final Point LR[];
@@ -31,33 +31,45 @@ public class BattleShip{
     public LinkedList<Point> getCek() {
         return cek;
     }
-    
-    
+
     public void Generate() {
-        if(rand.nextInt()%2==0){
-            L();
-        }else{
+        //rotasi L
+        if (rand.nextInt() % 7 == 0) {
+            L4();
+        } else if (rand.nextInt() % 5 == 0) {
+            L3();
+        } else if (rand.nextInt() % 3 == 0) {
             L2();
+        } else {
+            L();
         }
-        if(rand.nextInt()%2==0){
-            LR();
-        }else{
+        
+        //rotasi lurus
+        if(rand.nextInt()%7 == 0){
+            LR(4);
+        }
+        if (rand.nextInt() % 5 == 0) {
+            LR3();
+        } else if (rand.nextInt() % 3 == 0) {
             LR2();
+        } else{
+            LR();
         }
-        if(rand.nextInt()%2==0){
+        
+        if (rand.nextInt() % 2 == 0) {
             T();
-        }else{
+        } else {
             T2();
         }
-        if(rand.nextInt()%2==0){
+        if (rand.nextInt() % 2 == 0) {
             I();
-        }else{
+        } else {
             I2();
         }
     }
 
     private void L() {
-        int x = rand.nextInt(6)+3;
+        int x = rand.nextInt(6) + 3;
         int y = rand.nextInt(7);
         L[0] = new Point(x, y);
         cek.add(L[0]);
@@ -72,8 +84,9 @@ public class BattleShip{
             cek.add(L[i]);
         }
     }
+
     private void L2() {
-        int x = rand.nextInt(6)+3;
+        int x = rand.nextInt(6) + 3;
         int y = rand.nextInt(7);
         L[0] = new Point(x, y);
         cek.add(L[0]);
@@ -87,7 +100,43 @@ public class BattleShip{
             L[i] = new Point(x, y);
             cek.add(L[i]);
         }
-        
+
+    }
+
+    private void L3() {
+        int x = rand.nextInt(7) + 2;
+        int y = rand.nextInt(6);
+        L[0] = new Point(x, y);
+        cek.add(L[0]);
+        for (int i = 1; i <= 3; i++) {
+            y++;
+            L[i] = new Point(x, y);
+            cek.add(L[i]);
+        }
+        for (int i = 4; i <= 5; i++) {
+            x--;
+            L[i] = new Point(x, y);
+            cek.add(L[i]);
+        }
+
+    }
+
+    private void L4() {
+        int x = rand.nextInt(7);
+        int y = rand.nextInt(6);
+        L[0] = new Point(x, y);
+        cek.add(L[0]);
+        for (int i = 1; i <= 2; i++) {
+            x++;
+            L[i] = new Point(x, y);
+            cek.add(L[i]);
+        }
+        for (int i = 3; i <= 5; i++) {
+            y++;
+            L[i] = new Point(x, y);
+            cek.add(L[i]);
+        }
+
     }
 
     public void printL() {
@@ -131,15 +180,85 @@ public class BattleShip{
             }
         }
     }
+
     private void LR2() {
         boolean temp = true;
         Point s = new Point();
         while (temp) {
             int y = rand.nextInt(9);
-            int x = rand.nextInt(6)+3;
+            int x = rand.nextInt(6) + 3;
             LR[0] = new Point(x, y);
             for (int i = 1; i <= 3; i++) {
                 x--;
+                LR[i] = new Point(x, y);
+            }
+
+            int i = 0, j;
+            boolean sama = false;
+            while (i < LR.length && sama == false) {
+                j = 0;
+                while (j < cek.size() && sama == false) {
+                    if (s.EQ(LR[i], cek.get(j))) {
+                        sama = true;
+                    }
+                    j++;
+                }
+                i++;
+            }
+
+            if (sama == false) {
+                temp = false;
+                for (int k = 0; k < LR.length; k++) {
+                    cek.add(LR[k]);
+                }
+            }
+        }
+    }
+
+    private void LR3() {
+        boolean temp = true;
+        Point s = new Point();
+        while (temp) {
+            int y = rand.nextInt(6);
+            int x = rand.nextInt(6);
+            LR[0] = new Point(x, y);
+            for (int i = 1; i <= 3; i++) {
+                x++;
+                y++;
+                LR[i] = new Point(x, y);
+            }
+
+            int i = 0, j;
+            boolean sama = false;
+            while (i < LR.length && sama == false) {
+                j = 0;
+                while (j < cek.size() && sama == false) {
+                    if (s.EQ(LR[i], cek.get(j))) {
+                        sama = true;
+                    }
+                    j++;
+                }
+                i++;
+            }
+
+            if (sama == false) {
+                temp = false;
+                for (int k = 0; k < LR.length; k++) {
+                    cek.add(LR[k]);
+                }
+            }
+        }
+    }
+    private void LR4() {
+        boolean temp = true;
+        Point s = new Point();
+        while (temp) {
+            int y = rand.nextInt(6)+3;
+            int x = rand.nextInt(6);
+            LR[0] = new Point(x, y);
+            for (int i = 1; i <= 3; i++) {
+                x++;
+                y--;
                 LR[i] = new Point(x, y);
             }
 
@@ -212,6 +331,7 @@ public class BattleShip{
             }
         }
     }
+
     private void T2() {
         boolean temp = true;
         Point s = new Point();
@@ -288,9 +408,10 @@ public class BattleShip{
                     cek.add(I[k]);
                 }
             }
-            
+
         }
     }
+
     private void I2() {
         boolean temp = true;
         Point s = new Point();
@@ -319,7 +440,7 @@ public class BattleShip{
                     cek.add(I[k]);
                 }
             }
-            
+
         }
     }
 
