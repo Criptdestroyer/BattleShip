@@ -65,7 +65,7 @@ public class Playing {
         Player p2 = new Player(np2);
 
         int choose = 1;
-        while (main && (!p1.getBt().menang() || !p2.getBt().menang())) { //melakukan pengualngan selama pemain belum menyerah dan menang
+        while (main && (!p1.getBt().menang() && !p2.getBt().menang())) { //melakukan pengualngan selama pemain belum menyerah dan menang
             boolean cek = false;
             if (choose % 2 == 0) {
                 choose = player2(p1, p2, cek, choose);
@@ -76,15 +76,15 @@ public class Playing {
         }
         if (p1.isSurrender() || p2.isSurrender()) {
             if(p1.isSurrender()){
-                win3(p2.getBt(),p2.getName());
+                win3(p1.getBt(),p2.getName());
             }else if(p2.isSurrender()){
-                win3(p1.getBt(),p1.getName());
+                win3(p2.getBt(),p1.getName());
             }
         } else {
             if (p1.getBt().menang()) {
-                win2(p1.getBt(), p1.getName());
+                win2(p1.getBt(), p2.getName());
             } else {
-                win2(p2.getBt(), p2.getName());
+                win2(p2.getBt(), p1.getName());
             }
         }
     }
