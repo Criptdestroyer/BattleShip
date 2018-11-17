@@ -33,7 +33,7 @@ public class BattleField {
         return benar == menangs;
     }
 
-    public void input(int x, int y) { //input
+    public boolean input(int x, int y) { //input
         if (ship[x][y] == true) { //jika kordinat yg ditebak itu true
             map[x][y] = 'X'; //maka di map akan dirubah menjadi X
 
@@ -50,13 +50,14 @@ public class BattleField {
                 benar++;
             }
             alreadyinput.add(new Point(x, y));//kordinat yg telah ditebak masuk kedalam input
-
+            return true;
         } else { //jika false
             map[x][y] = '_'; //maka di map menjadi _
+            return false;
         }
     }
 
-    public void menyerah() { //jika menyerah maka seluruh koordinat ship ditampilkan di map
+    public boolean menyerah() { //jika menyerah maka seluruh koordinat ship ditampilkan di map
         for (int i = 0; i < ship.length; i++) {
             for (int j = 0; j < ship[i].length; j++) {
                 if (ship[i][j] == true) { // menampilkan seluruh ship
@@ -65,6 +66,7 @@ public class BattleField {
             }
         }
         printBattleField();
+        return true;
     }
 
     public void printBattleField() { //menampilkan map
