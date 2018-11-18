@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleship;
 
 /**
@@ -10,8 +5,12 @@ package battleship;
  * @author alfath
  */
 public class Point {
+    
+    //inisialisasi
     private final int x; //titik x
     private final int y; //titik y
+    
+    //constructor
     public Point() { //constructor tanpa parameter
         x = 0;
         y = 0;
@@ -20,12 +19,15 @@ public class Point {
         this.x = x;
         this.y = y;
     }
+    
+    //fungsi get (untuk mengambil nilai x dan y dari luar class ini)
     public int getX() { //mengambil nilai x
         return x;
     }
     public int getY() { //mengambil nilai y
         return y;
     }
+    
     //buat perbandingan  antara 2 point
     boolean EQ(Point P1, Point P2) { //jika sama true
         return (P1.x == P2.x) && (P1.y == P2.y); 
